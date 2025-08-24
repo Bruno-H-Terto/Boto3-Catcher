@@ -1,0 +1,41 @@
+<section class="h-98 p-2">
+  <turbo-frame id="email_show">
+    <div class="p-6 border-b border-gray-200">
+      <h2 class="text-2xl font-semibold mb-2"><%= email.subject.presence || "(Sem assunto)" %></h2>
+      <p class="text-sm text-gray-600"><strong>De:</strong> <%= email.source.presence || "Desconhecido" %></p>
+      <p class="text-sm text-gray-600 mb-4"><strong>Para:</strong> <%= email.destination.presence || "Desconhecido" %></p>
+      <h3 class="text-sm font-medium text-gray-500 mb-2">Anexos</h3>
+
+      <% if email.attachments.attached? %>
+          <div class="mt-4">
+            <ul class="flex flex-wrap gap-2">
+              <% email.attachments.each do |att| %>
+                <li>
+                  <%= link_to rails_blob_path(att, disposition: "attachment"), class: "inline-flex items-center gap-2 px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded text-sm text-gray-700 border border-gray-200 transition" do %>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14m7-7H5" />
+                    </svg>
+                    <span><%= att.filename.to_s %></span>
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+
+        <% else %>
+          <small>Sem anexos</small>
+        <% end %>
+      
+    </div>
+
+    <div class="flex-1 overflow-auto bg-white h-98">
+      <iframe 
+        id="email_preview_iframe"
+        srcdoc="<%= email.body_html %>"
+        class="w-full h-full border-0"
+        sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
+      ></iframe>
+    </div>
+
+  </turbo-frame>
+</section>

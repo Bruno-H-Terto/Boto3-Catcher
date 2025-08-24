@@ -1,0 +1,9 @@
+<li id="<%= dom_id(email) %>">
+  <%= link_to email.subject.presence || "(Sem assunto)", email_path(email),
+      class: "flex items-center gap-3 p-3 transition-colors rounded text-slate-700 hover:text-emerald-500 hover:bg-emerald-50 focus:bg-emerald-50",
+      data: { turbo_frame: "email_show" } %>
+
+  <% unless email.reader? %>
+    <small class="text-emerald-600 font-semibold ml-2">New</small>
+  <% end %>
+</li>
