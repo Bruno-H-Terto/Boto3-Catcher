@@ -1,6 +1,6 @@
 class EmailsController < ApplicationController
   def index
-    @emails = Email.all.order(created_at: :desc)
+    @emails = Email.all.order(reader: :asc, created_at: :desc)
   end
 
   def show
