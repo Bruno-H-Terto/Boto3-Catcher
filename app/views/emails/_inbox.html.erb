@@ -1,9 +1,17 @@
-<li id="<%= dom_id(email) %>">
-  <%= link_to email.subject.presence || "(Sem assunto)", email_path(email),
-      class: "flex items-center gap-3 p-3 transition-colors rounded text-slate-700 hover:text-emerald-500 hover:bg-emerald-50 focus:bg-emerald-50",
-      data: { turbo_frame: "email_show" } %>
+<li id="<%= dom_id(email) %>" class="border-b border-gray-200">
+  <%= link_to email_path(email),
+      class: [
+        "flex items-center gap-3 p-3 transition-colors rounded text-slate-700 hover:text-emerald-500 hover:bg-emerald-50 focus:bg-emerald-50",
+        ("font-bold" unless email.reader?)
+      ].compact.join(" "),
+      data: { turbo_frame: "email_show" } do %>
+      
+    <span><%= email.subject.presence || t(".no_subject") %></span>
 
-  <% unless email.reader? %>
-    <small class="text-emerald-600 font-semibold ml-2">New</small>
+    <% unless email.reader? %>
+      <span class="ml-2 px-2 py-0.5 text-xs font-semibold text-emerald-700 bg-emerald-100 rounded-full">
+        New
+      </span>
+    <% end %>
   <% end %>
 </li>

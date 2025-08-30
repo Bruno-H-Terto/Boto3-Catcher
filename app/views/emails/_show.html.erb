@@ -1,10 +1,10 @@
 <section class="h-98 p-2">
   <turbo-frame id="email_show">
     <div class="p-6 border-b border-gray-200">
-      <h2 class="text-2xl font-semibold mb-2"><%= email.subject.presence || "(Sem assunto)" %></h2>
-      <p class="text-sm text-gray-600"><strong>De:</strong> <%= email.source.presence || "Desconhecido" %></p>
-      <p class="text-sm text-gray-600 mb-4"><strong>Para:</strong> <%= email.destination.presence || "Desconhecido" %></p>
-      <h3 class="text-sm font-medium text-gray-500 mb-2">Anexos</h3>
+      <h2 class="text-2xl font-semibold mb-2"><%= email.subject.presence || t(".no_subject") %></h2>
+      <p class="text-sm text-gray-600"><strong><%= t(".from") %></strong> <%= email.source.presence || t(".unknown") %></p>
+      <p class="text-sm text-gray-600 mb-4"><strong><%= t(".to") %>:</strong> <%= email.destination.presence || t(".unknown") %></p>
+      <h3 class="text-sm font-medium text-gray-500 mb-2"><%= t(".attachments") %></h3>
 
       <% if email.attachments.attached? %>
           <div class="mt-4">
@@ -23,7 +23,7 @@
           </div>
 
         <% else %>
-          <small>Sem anexos</small>
+          <small><%= t(".no_attachments")%></small>
         <% end %>
       
     </div>

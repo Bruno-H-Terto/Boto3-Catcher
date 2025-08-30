@@ -1,11 +1,12 @@
 <section class="h-screen flex">
-  <aside class="w-72 flex-shrink-0 flex flex-col border-r border-gray-200 bg-white">
-    <h1 class="flex items-center gap-2 p-6 text-xl font-medium border-b border-gray-200">
-      <svg class="w-8 h-8 bg-emerald-500" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 2L15 8H9L12 2Z" /> <!-- Ícone de catavento -->
+  <aside class="w-72 flex-shrink-0 flex flex-col border border-gray-200 bg-white">
+    <h1 class="flex items-center gap-3 p-6 text-3xl font-semibold border-b border-gray-200 bg-white shadow-sm">
+      <svg class="w-8 h-8 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
       </svg>
-      Emails
+      <span><%= t(".title") %></span>
     </h1>
+
 
     <ul id="emails_list" class="flex-1 overflow-y-auto divide-y divide-slate-100">
       <%= turbo_frame_tag "emails" do %>
@@ -18,7 +19,7 @@
     </ul>
   </aside>
 
-  <div class="flex-1 p-4 overflow-auto border border-gray-200 rounded ml-4">
+  <div class="flex-1 p-4 overflow-auto border border-gray-200 rounded">
     <%= turbo_frame_tag "email_show" do %>
       <div class="flex items-center justify-center h-full text-gray-500 text-lg">
         Selecione um email

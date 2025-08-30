@@ -29,3 +29,15 @@
 
 en:
   hello: "Hello world"
+  emails:
+    index:
+      title: "Inbox"
+    inbox:
+      no_subject: '(No subject)'
+    show:
+      from: 'From'
+      to: 'To'
+      attachments: "Attachments"
+      no_attachments: "No attachments"
+      no_subject: '(No subject)'
+      unknown: "Unknown"

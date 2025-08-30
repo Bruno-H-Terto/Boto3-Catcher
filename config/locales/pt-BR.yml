@@ -1,0 +1,13 @@
+pt-BR:
+  emails:
+    index:
+      title: "Caixa de entrada"
+    inbox:
+      no_subject: '(Sem assunto)'
+    show:
+      from: 'De'
+      to: 'Para'
+      attachments: "Anexos"
+      no_attachments: "Sem anexos"
+      no_subject: '(Sem assunto)'
+      unknown: "Desconhecido"
